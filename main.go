@@ -1,10 +1,13 @@
 package main
 
 import (
-	"github.com/dreese33/genomics/fetch"
 	"fmt"
+	"github.com/dreese33/genomics/fetch"
 )
 
 func main() {
-	fmt.Println("go" + "lang")
+	respBody, err := fetch.RequestURL(fetch.PubchemAPITest)
+	if (err == nil) {
+		fmt.Println(respBody)
+	}
 }
