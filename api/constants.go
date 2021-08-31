@@ -1,4 +1,4 @@
-package fetch
+package api
 
 // PubchemAPI PUG REST API
 const PubchemAPI = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/"
