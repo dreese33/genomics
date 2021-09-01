@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/dreese33/genomics/api"
 	"github.com/dreese33/genomics/pkg/fetch"
 	"github.com/dreese33/genomics/pkg/fetch/pubchem"
 )
@@ -10,13 +9,15 @@ import (
 func main() {
   const compound = "Aspirin"
 
-  var endpoint = fetch.EndpointImpl{
-    URL: api.PubchemAPI,
-    Fmt: 0,
-    TestURL: api.PubchemAPITest,
-  }
-
-  body, err := pubchem.GetCompoundByName(&endpoint, compound)
+  var endpoint = fetch.NewEndpoint(
+    pubchem.BaseURL,
+    0,
+    pubchem.TestURL,
+    pubchem.GetCompoundByName,
+    compound,
+  )
+ 
+  body, err := fetch.RequestURL(endpoint.ConstructURL())
   if err != nil {
     fmt.Println("error occurred")
     fmt.Println(err)
