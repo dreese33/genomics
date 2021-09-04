@@ -8,12 +8,15 @@ type ResponseFormat int32
 // Response format enumeration
 const (
   JSON ResponseFormat = iota
-  CSV ResponseFormat = iota
-  XML ResponseFormat = iota
+  CSV
+  XML
 )
 
-// Responses for ResponseFormat
+// Responses stringified for ResponseFormat
 var Responses = [3]string{"JSON", "CSV", "XML"}
+func (rf ResponseFormat) String() string {
+  return Responses[rf]
+}
 
 // Endpoint defines all functions that need to be implemented by each query builder
 // for each api used in this project
@@ -60,7 +63,7 @@ func (endpoint *EndpointImpl) GetURL() string {
 // GetFmt returns endpoint response format
 func (endpoint *EndpointImpl) GetFmt() ResponseFormat {
   return endpoint.Fmt
-} 
+}
 
 // GetDIR returns url directory to be queried
 func (endpoint *EndpointImpl) GetDIR() string {
@@ -74,7 +77,7 @@ func (endpoint *EndpointImpl) GetSearchVal() string {
 
 // TestEndpoint tests the endpoint connection, and verifies it exists
 func (endpoint *EndpointImpl) TestEndpoint(expected string) bool {
-  body, err := RequestURL(endpoint.TestURL)
+  body, err := RequestURL(endpoint.TestURL, HEAD)
   if err != nil {
     return false
   }
@@ -89,7 +92,7 @@ func (endpoint *EndpointImpl) ConstructURL() string {
     endpoint.GetURL(),
     endpoint.GetDIR(),
     endpoint.GetSearchVal(),
-    Responses[endpoint.GetFmt()],
+    endpoint.GetFmt().String(),
   }
 
   return strings.Join(urlVals, "/")
