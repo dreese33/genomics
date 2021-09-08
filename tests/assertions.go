@@ -6,6 +6,7 @@ import (
 )
 
 // AssertEqual ensures that two types are equal
+// Credit to https://gist.github.com/samalba/6059502
 func AssertEqual(t *testing.T, a interface{}, b interface{}, message string) {
   if a == b {
     return

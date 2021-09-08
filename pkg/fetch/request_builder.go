@@ -1,9 +1,10 @@
 package fetch
 
 import (
-  "errors"
-  "net/http"
-  "io/ioutil"
+	"errors"
+	"fmt"
+	"io/ioutil"
+	"net/http"
 )
 
 // HTTP methods enumeration
@@ -29,13 +30,19 @@ func RequestURL(url string, method HTTP) (string, error) {
   }
 
   if err != nil {
-    return "", errors.New("http get request failed")
+    return "", err
+  }
+
+  if (resp.StatusCode != 200) {
+    return "", errors.New(
+      "Failed with status code " + fmt.Sprint(resp.StatusCode),
+    )
   }
 
   body, err := ioutil.ReadAll(resp.Body)
   if err != nil {
-    return "", errors.New("parsing body failed")
+    return "", err
   }
 
-  return string(body), nil
+  return string(body),nil
 }
