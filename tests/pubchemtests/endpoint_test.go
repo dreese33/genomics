@@ -29,3 +29,8 @@ func TestCompoundByNameURLExists(t *testing.T) {
 func TestGetCompoundByName(t *testing.T) {
   tests.TestGetRequest(testEndpoints[0], "TestGetCompoundByName", t)
 }
+
+func TestEndpointTestURL(t *testing.T) {
+  body, err := fetch.RequestURL(testEndpoints[0].GetTestURL(), fetch.GET)
+  tests.TestBody(t, "TestEndpointTestURL", body, err)
+}

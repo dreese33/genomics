@@ -25,9 +25,9 @@ type Endpoint interface {
   GetFmt() ResponseFormat
   GetDIR() string
   GetSearchVal() string
+  GetTestURL() string
 
   ConstructURL() string
-  TestEndpoint(string) bool
 }
 
 // EndpointImpl information for url construction
@@ -75,14 +75,9 @@ func (endpoint *EndpointImpl) GetSearchVal() string {
   return endpoint.SearchVal
 }
 
-// TestEndpoint tests the endpoint connection, and verifies it exists
-func (endpoint *EndpointImpl) TestEndpoint(expected string) bool {
-  body, err := RequestURL(endpoint.TestURL, HEAD)
-  if err != nil {
-    return false
-  }
-
-  return body == expected
+// GetTestURL returns specific url as a test endpoint
+func (endpoint *EndpointImpl) GetTestURL() string {
+  return endpoint.TestURL
 }
 
 // ConstructURL Constructs url then searches Pubchem api
