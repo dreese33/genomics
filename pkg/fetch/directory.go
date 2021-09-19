@@ -1,6 +1,6 @@
 package fetch
 
 type Directory interface {
-	ValidateDirectory()
-	ConstructDirectory()
+	ValidateDirectory() bool
+	ConstructDirectory() string
 }

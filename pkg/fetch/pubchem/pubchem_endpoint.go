@@ -1,6 +1,7 @@
 package pubchem
 
 import (
+	"fmt"
 	. "github.com/dreese33/genomics/pkg/fetch/pubchem/pubchem_dirs"
 	"github.com/dreese33/genomics/pkg/fetch/pubchem/pubchem_dirs/assays"
 )
@@ -39,4 +40,25 @@ type PubchemDirectory struct {
 	AD  assays.AssayDomain
 	ATG assays.AssayTarget
 	AT  assays.AssayType
+}
+
+// NewPubchemDirectory constructs a PubchemDirectory object
+func NewPubchemDirectory(subDirectories ...interface{}) {
+	for _, subDirectory := range subDirectories {
+		switch subDirType := subDirectory.(type) {
+		case Domain:
+			fmt.Print("working directory domain")
+		default:
+			fmt.Print("directory type does not exist ", subDirType)
+		}
+	}
+}
+
+// Implementation for Directory object functions
+func (directory *PubchemDirectory) ValidateDirectory() bool {
+	return true
+}
+
+func (directory *PubchemDirectory) ConstructDirectory() string {
+	return ""
 }
