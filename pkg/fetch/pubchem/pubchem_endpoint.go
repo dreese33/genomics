@@ -2,6 +2,8 @@ package pubchem
 
 import (
 	"fmt"
+	"strings"
+
 	. "github.com/dreese33/genomics/pkg/fetch/pubchem/pubchem_dirs"
 	"github.com/dreese33/genomics/pkg/fetch/pubchem/pubchem_dirs/assays"
 )
@@ -42,16 +44,37 @@ type PubchemDirectory struct {
 	AT  assays.AssayType
 }
 
+// FillDefaults sets all values to -1
+func (directory *PubchemDirectory) FillDefaults() {
+	directory.Dom = -1
+	directory.CD = -1
+	directory.SS = -1
+	directory.FS = -1
+	directory.REF = -1
+	directory.SD = -1
+	directory.OT = -1
+	directory.AD = -1
+	directory.ATG = -1
+	directory.AT = -1
+}
+
 // NewPubchemDirectory constructs a PubchemDirectory object
-func NewPubchemDirectory(subDirectories ...interface{}) {
+func NewPubchemDirectory(subDirectories ...interface{}) PubchemDirectory {
+	var pugDirectory = new(PubchemDirectory)
+	pugDirectory.FillDefaults()
+
 	for _, subDirectory := range subDirectories {
 		switch subDirType := subDirectory.(type) {
 		case Domain:
-			fmt.Print("working directory domain")
+			pugDirectory.Dom = subDirectory.(Domain)
+		case CompoundDomain:
+			pugDirectory.CD = subDirectory.(CompoundDomain)
 		default:
 			fmt.Print("directory type does not exist ", subDirType)
 		}
 	}
+
+	return *pugDirectory
 }
 
 // Implementation for Directory object functions
@@ -60,5 +83,14 @@ func (directory *PubchemDirectory) ValidateDirectory() bool {
 }
 
 func (directory *PubchemDirectory) ConstructDirectory() string {
-	return ""
+	var directories []string
+	if directory.Dom != -1 {
+		directories = append(directories, directory.Dom.String())
+	}
+
+	if directory.CD != -1 {
+		directories = append(directories, directory.CD.String())
+	}
+
+	return strings.Join(directories, "/")
 }
