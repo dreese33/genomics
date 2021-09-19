@@ -9,6 +9,6 @@ import (
 //***************************
 // TEST DOMAIN QUERIES
 //***************************
-func TestDomainByName(t *testing.T) {
-	helpers.TestGetRequest(testEndpoints[1], "TestDomainByName", t)
+func TestSubstanceDomain(t *testing.T) {
+	helpers.TestURLExists(TestEndpoints[SubstanceDomainTest], "TestSubstanceDomain", t)
 }

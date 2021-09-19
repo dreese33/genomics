@@ -8,14 +8,14 @@ import (
 )
 
 func TestCompoundByNameURLExists(t *testing.T) {
-	helpers.TestURLExists(testEndpoints[0], "TestCompoundByNameURLExists", t)
+	helpers.TestURLExists(TestEndpoints[SimpleEndpointTest], "TestCompoundByNameURLExists", t)
 }
 
 func TestGetCompoundByName(t *testing.T) {
-	helpers.TestGetRequest(testEndpoints[0], "TestGetCompoundByName", t)
+	helpers.TestGetRequest(TestEndpoints[SimpleEndpointTest], "TestGetCompoundByName", t)
 }
 
 func TestEndpointTestURL(t *testing.T) {
-	body, err := fetch.RequestURL(testEndpoints[0].GetTestURL(), fetch.GET)
+	body, err := fetch.RequestURL(TestEndpoints[SimpleEndpointTest].GetTestURL(), fetch.GET)
 	helpers.TestBody(t, "TestEndpointTestURL", body, err)
 }

@@ -17,8 +17,17 @@ var domainQueryObj = pubchem.NewPubchemDirectory(
 )
 var domainQuery = domainQueryObj.ConstructDirectory()
 
-var testEndpoints = []fetch.Endpoint{
-	fetch.NewEndpoint(
+// TestEndpoint enumeration
+type TestEndpoint int32
+
+const (
+	SimpleEndpointTest TestEndpoint = iota
+	SubstanceDomainTest
+)
+
+// TestEndpoints maps test names to associated endpoints
+var TestEndpoints = map[TestEndpoint]fetch.Endpoint{
+	SimpleEndpointTest: fetch.NewEndpoint(
 		pubchem.BaseURL,
 		fetch.JSON,
 		pubchem.TestURL,
@@ -26,8 +35,8 @@ var testEndpoints = []fetch.Endpoint{
 		names[0],
 	),
 
-	// Domain substance query test by name
-	fetch.NewEndpoint(
+	// Domain substance query test
+	SubstanceDomainTest: fetch.NewEndpoint(
 		pubchem.BaseURL,
 		fetch.JSON,
 		pubchem.TestURL,
