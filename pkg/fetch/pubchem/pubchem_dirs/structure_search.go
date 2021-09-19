@@ -5,13 +5,14 @@ type StructureSearch int32
 
 // StructureSearch enumeration
 const (
-  Substructure StructureSearch = iota
-  Superstructure
-  Similarity
-  Identity
+	Substructure StructureSearch = iota
+	Superstructure
+	Similarity
+	Identity
 )
 
 var structureSearches = [4]string{"substructure", "superstructure", "similarity", "identity"}
+
 func (ss StructureSearch) String() string {
-  return structureSearches[ss]
+	return structureSearches[ss]
 }

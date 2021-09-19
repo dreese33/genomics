@@ -12,7 +12,7 @@ const (
 	Accession
 )
 
-var assayTargets = [5]string {
+var assayTargets = [5]string{
 	"gi",
 	"proteinname",
 	"geneid",

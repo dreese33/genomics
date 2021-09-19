@@ -20,7 +20,7 @@ const (
 	ActiveConcentrationSpecified
 )
 
-var AssayTypes = [13]string {
+var AssayTypes = [13]string{
 	"all",
 	"confirmatory",
 	"doseresponse",

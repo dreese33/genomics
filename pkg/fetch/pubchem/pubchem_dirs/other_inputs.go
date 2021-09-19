@@ -13,7 +13,7 @@ const (
 	Heading
 )
 
-var otherInputs = [6]string {
+var otherInputs = [6]string{
 	"sources",
 	"sourcetable",
 	"conformers",

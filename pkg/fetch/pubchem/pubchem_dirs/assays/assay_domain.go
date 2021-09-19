@@ -13,7 +13,7 @@ const (
 	Activity
 )
 
-var assayDomains = [6]string {
+var assayDomains = [6]string{
 	"aid",
 	"listkey",
 	"type",

@@ -27,17 +27,16 @@ import (
 // ****************************************************************************************************************************************************************************************************************************
 //
 
-
 // PubchemDirectory is the directory for PUG REST API query
 type PubchemDirectory struct {
 	Dom Domain
-	CD CompoundDomain
-	SS StructureSearch
-	FS FastSearch
+	CD  CompoundDomain
+	SS  StructureSearch
+	FS  FastSearch
 	REF XREF
-	SD SubstanceDomain
-	OT OtherInputs
-	AD assays.AssayDomain
+	SD  SubstanceDomain
+	OT  OtherInputs
+	AD  assays.AssayDomain
 	ATG assays.AssayTarget
-	AT assays.AssayType
+	AT  assays.AssayType
 }

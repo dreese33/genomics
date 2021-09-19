@@ -5,12 +5,13 @@ type Domain int32
 
 // Domain enumeration
 const (
-  Substance Domain = iota
-  Compound
-  Assay
+	Substance Domain = iota
+	Compound
+	Assay
 )
 
 var domains = [3]string{"substance", "compound", "assay"}
+
 func (d Domain) String() string {
-  return domains[d]
+	return domains[d]
 }

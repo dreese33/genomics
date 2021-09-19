@@ -12,7 +12,7 @@ const (
 	ListKey
 )
 
-var substanceDomains = [5]string {
+var substanceDomains = [5]string{
 	"sid", "sourceid", "sourceall", "name", "listkey",
 }
 
