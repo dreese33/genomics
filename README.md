@@ -1,1 +1,2 @@
-# Experimenting with some genomics libraries using the Go programming language
+# Genomics Experimentation
+Experimenting with some genomics libraries, using an existing directory verification process, inspired by the Abstract Sytax Tree in compiler theory.
